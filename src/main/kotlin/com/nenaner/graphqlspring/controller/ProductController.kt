@@ -7,7 +7,6 @@ import org.springframework.graphql.data.method.annotation.QueryMapping
 import org.springframework.stereotype.Controller
 import java.util.*
 
-
 @Controller
 class ProductController(repository: ProductRepository) {
     private val repository: ProductRepository
@@ -17,12 +16,12 @@ class ProductController(repository: ProductRepository) {
     }
 
     @QueryMapping
-    fun allProducts(): Iterable<Product?> {
+    fun allProducts(): Iterable<Product> {
         return repository.findAll()
     }
 
     @QueryMapping
-    fun getProduct(@Argument id: Int): Optional<Product?> {
+    fun getProduct(@Argument id: Int): Optional<Product> {
         return repository.findById(id)
     }
 }

@@ -7,7 +7,6 @@ import org.springframework.graphql.data.method.annotation.QueryMapping
 import org.springframework.stereotype.Controller
 import java.util.*
 
-
 @Controller
 class OrderController(repository: OrderRepository) {
     private val repository: OrderRepository
@@ -17,12 +16,12 @@ class OrderController(repository: OrderRepository) {
     }
 
     @QueryMapping
-    fun allOrders(): Iterable<Order?> {
+    fun allOrders(): Iterable<Order> {
         return repository.findAll()
     }
 
     @QueryMapping
-    fun getOrder(@Argument id: Int): Optional<Order?> {
+    fun getOrder(@Argument id: Int): Optional<Order> {
         return repository.findById(id)
     }
 }

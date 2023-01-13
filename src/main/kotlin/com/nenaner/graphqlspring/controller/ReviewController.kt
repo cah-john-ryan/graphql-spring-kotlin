@@ -7,7 +7,6 @@ import org.springframework.graphql.data.method.annotation.QueryMapping
 import org.springframework.stereotype.Controller
 import java.util.*
 
-
 @Controller
 class ReviewController(repository: ReviewRepository) {
     private val repository: ReviewRepository
@@ -17,12 +16,12 @@ class ReviewController(repository: ReviewRepository) {
     }
 
     @QueryMapping
-    fun allReviews(): Iterable<Review?> {
+    fun allReviews(): Iterable<Review> {
         return repository.findAll()
     }
 
     @QueryMapping
-    fun getReview(@Argument id: Int): Optional<Review?> {
+    fun getReview(@Argument id: Int): Optional<Review> {
         return repository.findById(id)
     }
 }

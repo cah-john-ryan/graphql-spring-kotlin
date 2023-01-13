@@ -9,7 +9,6 @@ import org.springframework.boot.ApplicationArguments
 import org.springframework.boot.ApplicationRunner
 import org.springframework.stereotype.Component
 import java.time.LocalDate
-import java.util.List
 
 
 @Component
@@ -38,7 +37,7 @@ class DatabaseInit(
         val pecan = Product("Pecan Waffle", "Sweet Cream Waffle made with delicious Pecan Pieces")
         val chocolateChip = Product("Chocolate Chip Waffle", "Sweet Cream Waffle covered in Chocolate Chips")
         val peanutButter = Product("Peanut Butter Chip Waffle", "Sweet Cream Waffle covered in Peanut Butter Chips")
-        productRepository.saveAll(List.of(classic, pecan, chocolateChip, peanutButter))
+        productRepository.saveAll(listOf(classic, pecan, chocolateChip, peanutButter))
         val dan = Customer("Dan", "Vega", "danvega@gmail.com")
         customerRepository.save(dan)
         val one = Order(1, LocalDate.now(), OrderStatus.PENDING, classic, dan)

@@ -9,7 +9,6 @@ import org.springframework.graphql.data.method.annotation.QueryMapping
 import org.springframework.graphql.data.method.annotation.SchemaMapping
 import org.springframework.stereotype.Controller
 
-
 @Controller
 class CustomerController(repository: CustomerRepository, orderRepository: OrderRepository) {
     private val repository: CustomerRepository
@@ -21,17 +20,17 @@ class CustomerController(repository: CustomerRepository, orderRepository: OrderR
     }
 
     @QueryMapping
-    fun allCustomers(): List<Customer?>? {
+    fun allCustomers(): List<Customer> {
         return repository.findAll()
     }
 
     @QueryMapping
-    fun findCustomerByLastName(@Argument last: String?): Customer? {
+    fun findCustomerByLastName(@Argument last: String): Customer? {
         return repository.findByLastName(last)
     }
 
     @SchemaMapping
-    fun orders(customer: Customer?): List<Order?>? {
+    fun orders(customer: Customer): List<Order> {
         return orderRepository.findByCustomer(customer)
     }
 }
